@@ -18,13 +18,15 @@ const Navbar = () => {
   return (
     <>
       {menuOpen ? (
-        <div
-          className="fixed inset-0 z-10 bg-white "
+        <motion.div
+          initial={{ y: -100 }}
+          animate={{ y: 0, transition: { duration: 3, ease: "easeIn" } }}
+          className="fixed inset-0 bg-white "
           onClick={() => close()}
-        ></div>
+        ></motion.div>
       ) : null}
 
-      <div className="h-screen max-w-[1100px] mx-auto my-2 ml-2 mr-3 flex justify-between">
+      <div className="max-w-[1700px] mx-auto my-2 flex justify-between">
         {/* 1> logopart */}
         <div className="flex h-[fit-content] sm:gap-2">
           <div className="">
@@ -42,29 +44,41 @@ const Navbar = () => {
           </div>
         </div>
         {menuOpen ? (
-          <div className="sm:hidden z-10 ">
-            <button className="relative" onClick={() => close()}>
+          <div className="sm:hidden z-10">
+            <button className="relative mr-3" onClick={() => close()}>
               <IoCloseSharp />
             </button>
           </div>
         ) : (
           <div className="sm:hidden block">
-            <button className="relative" onClick={() => menu()}>
+            <button className="relative mr-3" onClick={() => menu()}>
               <GiHamburgerMenu />
             </button>
           </div>
         )}
         {/* 2> Navpart */}
-        <div className="font-bold text-xl hidden sm:block">
-          <ul className="flex gap-4">
+        {menuOpen ? (
+          <div className="font-bold text-xl fixed  top-[100px] left-[100px] right-[100px] ">
+            <ul
+              className={`flex justify-center items-center gap-8  whitespace-nowrap flex-col sm:flex-row`}
+            >
+              <Link className="hover:text-gray-500">Home</Link>
+              <Link className="hover:text-gray-500">About</Link>
+              <Link className="hover:text-gray-500">Vehicles Models</Link>
+              <Link className="hover:text-gray-500">Testimonials</Link>
+            </ul>
+          </div>
+        ) : null}
+        {/* 3> Buttonpart */}
+        <div className="font-bold text-xl hidden sm:flex ">
+          <ul className={`flex flex-col sm:flex-row gap-4`}>
             <Link className="hover:text-gray-500">Home</Link>
             <Link className="hover:text-gray-500">About</Link>
             <Link className="hover:text-gray-500">Vehicles Models</Link>
             <Link className="hover:text-gray-500">Testimonials</Link>
           </ul>
         </div>
-        {/* 3> Buttonpart */}
-        <div className="font-bold text-md hidden sm:block">
+        <div className="font-bold h-[fit-content] text-md hidden sm:flex">
           <button className="px-4 py-2 color hover:text-gray-500">
             {" "}
             Sign In
@@ -72,7 +86,7 @@ const Navbar = () => {
           <motion.button
             whileHover={{ scale: 1.1, backgroundColor: "rgb(169, 46, 46)" }}
             type="tween"
-            className="px-4 py-2 rounded-md  bg-red-600 text-white"
+            className="mr-3 px-4 rounded-md bg-red-600 text-white"
           >
             Register
           </motion.button>
