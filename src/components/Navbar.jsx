@@ -19,14 +19,15 @@ const Navbar = () => {
     <>
       {menuOpen ? (
         <motion.div
-          initial={{ y: -100 }}
-          animate={{ y: 0, transition: { duration: 3, ease: "easeIn" } }}
-          className="fixed inset-0 bg-white "
+          initial={{ y: 0, position: "fixed" }}
+          animate={{ y: 0, transition: { duration: 1, ease: "easeIn" } }}
+          exit={{ y: -100, transition: { duration: 1, ease: "easeOut" } }}
+          className="fixed inset-0 bg-white"
           onClick={() => close()}
         ></motion.div>
       ) : null}
 
-      <div className="max-w-[1700px] mx-auto my-2 flex justify-between">
+      <div className="max-w-[1400px] mx-auto my-2 flex justify-between items-center">
         {/* 1> logopart */}
         <div className="flex h-[fit-content] sm:gap-2">
           <div className="">
@@ -62,20 +63,39 @@ const Navbar = () => {
             <ul
               className={`flex justify-center items-center gap-8  whitespace-nowrap flex-col sm:flex-row`}
             >
-              <Link className="hover:text-gray-500">Home</Link>
-              <Link className="hover:text-gray-500">About</Link>
-              <Link className="hover:text-gray-500">Vehicles Models</Link>
-              <Link className="hover:text-gray-500">Testimonials</Link>
+              <Link to="#Home" className="hover:text-gray-500">
+                Home
+              </Link>
+              <Link to="#About" className="hover:text-gray-500">
+                About
+              </Link>
+              <Link to="#Vehicle" className="hover:text-gray-500">
+                Vehicles Models
+              </Link>
+              <Link to="#Testiomonial" className="hover:text-gray-500">
+                Testimonials
+              </Link>
             </ul>
           </div>
         ) : null}
         {/* 3> Buttonpart */}
         <div className="font-bold text-xl hidden sm:flex ">
           <ul className={`flex flex-col sm:flex-row gap-4`}>
-            <Link className="hover:text-gray-500">Home</Link>
-            <Link className="hover:text-gray-500">About</Link>
-            <Link className="hover:text-gray-500">Vehicles Models</Link>
-            <Link className="hover:text-gray-500">Testimonials</Link>
+            <Link to="#Home" className="hover:text-gray-500">
+              Home
+            </Link>
+            <Link to="#About" className="hover:text-gray-500">
+              About
+            </Link>
+            <Link to="#Vehicle" className="hover:text-gray-500">
+              Vehicles Models
+            </Link>
+            <Link to="#Testiomonial" className=" hover:text-gray-500">
+              Testimonials
+            </Link>
+            <Link to="#Contact" className=" hover:text-gray-500">
+              Contact
+            </Link>
           </ul>
         </div>
         <div className="font-bold h-[fit-content] text-md hidden sm:flex">
